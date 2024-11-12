@@ -13,7 +13,6 @@ http:
     network: "tcp"
     addr: "0.0.0.0:9527"
     timeout: 5
-    externalAddr: ""    # external access address, such as reverse proxy
   # casbin:
   #   model:
   #     path: "etc/rbac_model.conf"

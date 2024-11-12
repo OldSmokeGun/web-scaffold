@@ -3,6 +3,7 @@ package router
 import (
 	"log/slog"
 	"net/http"
+	"strings"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -63,11 +64,7 @@ func (g *ApiGroup) useRoutes(e *echo.Echo) {
 func (g *ApiGroup) useSwagger() {
 	// swagger documentation
 	if g.env == config.Dev {
-		docs.SwaggerInfo.Host = g.hsConf.Addr
-		extHost, _ := parseExternalAddr(g.hsConf.ExternalAddr)
-		if extHost != "" {
-			docs.SwaggerInfo.Host = extHost
-		}
+		docs.SwaggerInfo.Host = strings.ReplaceAll(g.hsConf.Addr, "0.0.0.0", "localhost")
 		docs.SwaggerInfo.BasePath = g.basePath
 
 		dg := g.group.Group("/docs")

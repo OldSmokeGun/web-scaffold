@@ -14,10 +14,9 @@ func (HTTP) GetName() string {
 
 // HTTPServer the HTTP server config
 type HTTPServer struct {
-	Network      string        `json:"network"`
-	Addr         string        `json:"addr"`
-	Timeout      time.Duration `json:"timeout"`
-	ExternalAddr string        `json:"externalAddr"`
+	Network string        `json:"network"`
+	Addr    string        `json:"addr"`
+	Timeout time.Duration `json:"timeout"`
 }
 
 func (HTTPServer) GetName() string {
